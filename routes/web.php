@@ -17,8 +17,6 @@ use App\Http\Controllers\PostController;
 */
 
 
-Route::get('/admin', function () {return view('admin.index');})->name('admin.index');
-
 Route::get('/post/{id}', 'App\Http\Controllers\PostController@show')->name('posts');
 
 Route::delete('/admin/posts/deletecover/{id}', 'App\Http\Controllers\PostController@deletecover')->name('delete.cover');
@@ -37,11 +35,21 @@ Route::get('/admin/users', 'App\Http\Controllers\UserController@index')->name('u
 
 Route::resource('/admin/carousel', 'App\Http\Controllers\CarouselController');
 
-Route::get('/', 'App\Http\Controllers\MainController@index')->name('home');
 
+//UserController
 Route::get('/register', 'App\Http\Controllers\UserController@create')->name('register.create');
 Route::post('/register', 'App\Http\Controllers\UserController@store')->name('register.store');
 
+Route::get('/login', 'App\Http\Controllers\UserController@loginForm')->name('loginForm');
+Route::post('/login', 'App\Http\Controllers\UserController@login')->name('login');
+
+Route::get('/logout', 'App\Http\Controllers\UserController@logout')->name('logout');
+Route::put('/is_admin/{id}','App\Http\Controllers\UserController@get_admin')->name('get-admin');
+
+
+Route::get('/admin', function () {return view('admin.index');})->name('admin.index');
+
+Route::get('/', 'App\Http\Controllers\MainController@index')->name('home');
 
 //Route::get('/admin/carousel', function () {
 //    return view('welcome');

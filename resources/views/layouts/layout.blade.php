@@ -73,7 +73,7 @@
 
 <!--Main content-->
 <main>
-
+@include('layouts.alerts')
 @yield('content')
 
 </main>

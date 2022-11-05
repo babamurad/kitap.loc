@@ -20,7 +20,7 @@
 <body>
     <main>
         <div class="container">
-            <div class="row">
+            <div class="row justify-content-center">
                 <!-- Grid column -->
                 <div class="col-md-6 my-5">
 
@@ -28,80 +28,56 @@
 
                         <div class="card-body text-center">
 
-                            <img src="https://mdbootstrap.com/wp-content/uploads/2018/06/logo-mdb-jquery-small.png"
+                            <img src=" {{ asset('assets/img/logo.png') }} "
                                 class="logo">
                             <h3 class="card-title my-2">Create an account</h3>
                             <p class="slogan">It's free and anyone can join!</p>
+                            @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
 
+                        @if (session()->has('error'))
+                        <div class="alert alert-danger">
+                           {{ session('error') }}
+                        </div>                                
+                        @endif
                             <form action="{{ route('register.store') }}" method="POST">
                                 @csrf
 
                                 <div class="md-form md-outline">
-                                    <input type="text" id="name" class="form-control" name="name">
+                                    <input type="text" id="name" class="form-control" name="name" value="{{ old('name') }}">
                                     <label for="name">Username</label>
                                 </div>
 
                                 <div class="md-form md-outline">
-                                    <input type="email" id="email" class="form-control" name="email">
+                                    <input type="email" id="email" class="form-control" name="email" value="{{ old('email') }}">
                                     <label for="email">E-mail</label>
                                 </div>
 
                                 <div class="md-form md-outline">
-                                    <input type="password" id="password" class="form-control">
+                                    <input type="password" id="password" class="form-control" name="password">
                                     <label for="password">Password</label>
                                 </div>
 
                                 <div class="md-form md-outline">
-                                    <input type="password" id="password2" class="form-control">
-                                    <label for="password2">Password confirmation</label>
+                                    <input type="password" id="password_confirmation" class="form-control" name="password_confirmation">
+                                    <label for="password_confirmation">Password confirmation</label>
                                 </div>
 
-                                <div class="card-foter text-right">
+                                <div class="card-foter text-center mb-2">
                                     <button type="submit"
                                         class="btn btn-outline-primary btn-sm waves-effect waves-light"
                                         style="width: 140px;">Sign up</button>
                                 </div>
+                                <span>Have account?</span>
+                                <a href=" {{route('login')}} ">Sign in</a>
                             </form>
-
-                        </div>
-
-                    </div>
-
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-6 my-5">
-
-                    <div class="card card-signup z-depth-1">
-
-                        <div class="card-body text-center">
-
-                            <img src="https://mdbootstrap.com/wp-content/uploads/2018/06/logo-mdb-jquery-small.png"
-                                class="logo">
-                            <h3 class="card-title my-2">Send message</h3>
-                            <p class="slogan">It's easy to give a feedback!</p>
-
-                            <div class="md-form md-outline">
-                                <input type="text" id="username12" class="form-control">
-                                <label for="username12">Username</label>
-                            </div>
-
-                            <div class="md-form md-outline">
-                                <input type="email" id="email12" class="form-control">
-                                <label for="email12">E-mail</label>
-                            </div>
-
-                            <!-- Basic textarea -->
-                            <div class="md-form md-outline">
-                                <textarea type="text" id="form1012" class="md-textarea form-control" rows="3"></textarea>
-                                <label for="form1012">Basic textarea</label>
-                            </div>
-
-                            <div class="card-foter text-right">
-                                <button type="button" class="btn btn-outline-warning btn-sm waves-effect waves-light"
-                                    style="width: 140px;">Send message</button>
-                            </div>
 
                         </div>
 
