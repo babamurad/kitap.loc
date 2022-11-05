@@ -25,8 +25,8 @@
                             </div>
                             <form role="form" method="post" action="{{ route('posts.update', $posts->id) }}"
                                 enctype="multipart/form-data">
-                                @csrf
-                                @method('PUT')
+                            @csrf
+                            @method('PUT')
 
                                 <!--Body -->
                                 <div class="md-form">

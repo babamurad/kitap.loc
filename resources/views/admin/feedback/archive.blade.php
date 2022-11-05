@@ -6,7 +6,7 @@
     </div>
     <!-- Heading & Date -->
     <section>
- 
+
         <div class="card mt-3">
             <div class="card-body">
                 @if ($feedbacks->count())

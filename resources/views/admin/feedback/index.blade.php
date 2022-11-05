@@ -26,7 +26,7 @@
                             <form action="{{ route('go.archive', $feedback->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
-                                <input name="flag" type="text" hidden value="1">
+                                <input name="flag" type="hidden" value="1">
                             <button type="submit" class="btn btn-amber btn-sm" onclick="return confirm('Перенести в архив?')">
                                 <i class="fas fa-archive mr-2"></i>В архив
                                 </button>

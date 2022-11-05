@@ -27,6 +27,11 @@ Route::delete('/admin/posts/deleteimage/{id}', 'App\Http\Controllers\PostControl
 Route::put('/admin/posts/update', 'App\Http\Controllers\PostController@update');
 
 Route::resource('/admin/posts', 'App\Http\Controllers\PostController');
+Route::resource('/admin/feedback', 'App\Http\Controllers\FeedbackController');
+Route::put('/admin/archive/{id}', 'App\Http\Controllers\FeedbackController@goarchive')->name('go.archive');
+Route::get('/admin/archive', 'App\Http\Controllers\FeedbackController@archive')->name('archive');
+
+Route::get('/admin/users', 'App\Http\Controllers\UserController@index')->name('users');
 
 
 

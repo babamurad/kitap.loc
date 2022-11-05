@@ -119,9 +119,8 @@ class FeedbackController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function archive($id)
+    public function archive()
     {  
-        dd('archive');
         $feedbacks = Feedback::where('answer', '1')->orderby('id', 'DESC')->paginate(3);
         return view('admin.feedback.archive', compact('feedbacks')); 
     }

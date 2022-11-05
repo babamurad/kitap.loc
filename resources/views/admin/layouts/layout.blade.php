@@ -14,9 +14,7 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/css/mdb.min.css') }}">
 
     <!-- Your custom styles (optional) -->
-    <style>
 
-    </style>
 </head>
 
 <body class="fixed-sn white-skin">
@@ -50,19 +48,43 @@
 
                     <li>
                         <a href="{{ route('admin.index') }}" class="waves-effect arrow-r">
-                            <i class="fas fa-tachometer-alt"></i>Dashboard</i>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="{{ route('posts.index') }}" class="waves-effect arrow-r">
-                            <i class="fas fa-rss-square"></i>Posts</i>
+                            <i class="fas fa-tachometer-alt"></i>Dashboard
                         </a>
                     </li>
 
                     <li>
                         <a href="{{ route('carousel.index') }}" class="waves-effect arrow-r">
-                            <i class="fas fa-images"></i>Carousel</i>
+                            <i class="fas fa-images"></i>Carousel
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="{{ route('posts.index') }}" class="waves-effect arrow-r">
+                            <i class="fas fa-rss-square"></i>Posts
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('feedback.index') }}" class="waves-effect arrow-r">
+                            <i class="fas fa-envelope"></i>Messages
+                            <span class="badge red ml-2">
+                                {{ \App\Models\Feedback::where('answer', '0')->count() }}
+                            </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('archive') }}" class="waves-effect arrow-r">
+                            <i class="fas fa-archive"></i>Archive Messages
+                            <span class="badge green ml-2">
+                                {{ \App\Models\Feedback::where('answer', '1')->count() }}
+                            </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('users') }}" class="waves-effect arrow-r">
+                            <i class="fas fa-users"></i>Users
                         </a>
                     </li>
 
@@ -71,6 +93,7 @@
             <!-- Side navigation links -->
 
         </ul>
+
         <div class="sidenav-bg mask-strong"></div>
     </div>
     <!-- Sidebar navigation -->
@@ -187,6 +210,18 @@
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="{{ asset('assets/admin/js/mdb.min.js') }}"></script>
 <!-- Custom scripts -->
+
+{{-- <script>
+    $(".arrow-r").on("click", function() {
+        var menuitem = $(".arrow-r");
+        for (let i = 0; i < menuitem.length; i++) {
+            menuitem[i].classList.remove("active");
+    }
+        
+        $(this).addClass("active");
+    });
+</script> --}}
+
 <script>
     // SideNav Initialization
     $(".button-collapse").sideNav();
