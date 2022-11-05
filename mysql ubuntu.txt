@@ -1,0 +1,63 @@
+Main layout 71Mq0DJ83uGs 
+    ALTER USER 'root'@'localhost' IDENTIFIED BY 'Bobo!!!7707'
+UPDATE mysql.user SET Password=PASSWORD('Bobo!!!7707') WHERE User='root';
+    mysql -u root -p
+
+    create user 'bobo'@'%' IDENTIFIED by 'Bobo!857707'
+
+    grant all privileges on db_kitap.* to 'bobo'@'%'
+
+    flush privileges
+
+    select user, host from mysql.user
+
+    sudo service mysql restart
+
+
+    Устанавка MySQL server: sudo apt install mysql-server -y
+    Базовая настройка защиты MySQL сервера: sudo mysql_secure_installation
+    Файл конфига: sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+    Запуск MySQL: sudo systemctl start mysql
+    Автозагрузка: sudo systemctl enable mysql
+    Перезапуск: sudo systemctl restart mysql
+
+
+  sudo service mysql stop
+  sudo mysqld_safe --skip-grant-tables
+  sudo service mysql start
+  sudo mysql -u root
+  use mysql;
+  show tables;
+  describe user;
+  update user set authentication_string=password('1111') where user='root';
+  FLUSH PRIVILEGES;
+
+
+  sudo apt search mysql-server
+  sudo systemctl stop mysqld
+
+  dump all databases
+  sudo mysqldump --all-databases > all_databases.sql
+
+  delete mysql server
+  sudo apt purge mysql-server*
+
+  Затем удалите файлы и журналы базы данных MySQL, используя следующую команду ниже:
+
+sudo rm -r /etc/mysql /var/lib/mysql
+sudo rm -r /var/log/mysql
+
+После этого запустите autoremoveкоманду, чтобы удалить все ненужные пакеты зависимостей, установленные MySQL:
+
+sudo apt autoremove
+
+выполните такую команду для установки MySQL сервера и клиента:
+sudo apt install mysql-server mysql-client
+
+sudo apt-get install mysql-client
+
+sudo service mysql start
+
+sudo mysql_secure_installation
+
+
