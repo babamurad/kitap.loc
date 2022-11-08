@@ -28,8 +28,9 @@
                 <div class="col-lg-6 dark-grey-text ml-lg-auto col-md-12 animated wow fadeIn" data-wow-delay="0.4s" style="justify-content: center;">
 
                     <!--Description-->
-                    <p>{{ $post->content }}
-                    </p>
+                  <p>
+                <?php echo  trim($post->content,'"')   ?>
+                </p>  
                 </div>
                 <!--Second column-->
 

@@ -73,10 +73,16 @@ class UserController extends Controller
 
     public function get_admin(Request $request, $id)
     {
-        dd($request);
+        // dd($request->all());
         $user = User::findOrFail($id);
-        $user->is_admin = $request->is_admin;
+        if($request->is_admin){
+            $user->is_admin = 1;    
+        } else {
+            $user->is_admin = 0;    
+        }        
         $user->update();
-        return view('user.index');
+
+        $users = User::orderby('id', 'DESC')->paginate(5);
+        return view('user.index', compact('users')); 
     }
 }

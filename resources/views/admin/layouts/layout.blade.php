@@ -157,7 +157,7 @@
                         <i class="fas fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Profile</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">{{ auth()->user()->name }}</a>
+                        <a class="dropdown-item" href="#">@if (Auth::check()) {{auth()->user()->name}} @else Profile @endif</a>
                         <a class="dropdown-item" href=" {{ route('logout') }} ">Log Out</a>
                         <a class="dropdown-item" href="#">My account</a>
                     </div>
@@ -211,7 +211,7 @@
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="{{ asset('assets/admin/js/mdb.min.js') }}"></script>
 <!-- Custom scripts -->
-
+@yield('tinyscript')
 
 <script>
     // SideNav Initialization
