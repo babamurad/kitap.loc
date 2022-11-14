@@ -47,9 +47,10 @@
                                     </div>
                                     <div class="col-sm-6">
                                                 <div class="form-header blue accent-1 mt-3">
-                                                    <h3><i class="fas fa-image"></i>Images:</h3>
+                                                    <h3><i class="fas fa-image mr-2"></i>Images:</h3>
                                                 </div>
                                                 <input class="btn btn-light-blue btn-sm" type="file" name="images[]" multiple>
+
                                     </div>
                                     <script type="text/javascript">
                                         function readURL(input) {
@@ -62,14 +63,14 @@
                                                 }
                                                 reader.readAsDataURL(input.files[0]);
                                             }
-                                        }
+                                       }
                                     </script>
 
                                 </div>
 
                                 <div class="md-form">
                                     <i class="fas fa-solid fa-book-open prefix grey-text"></i>
-                                    <textarea type="text" id="content" name="content" class="md-textarea form-control @error('content') is-invalid @enderror" rows="6"></textarea>
+                                    <textarea type="text" id="content" name="content" class="tinymce md-textarea form-control @error('content') is-invalid @enderror" rows="6"></textarea>
                                     <label for="content" class="">Содержание новости</label>
                                 </div>
 
@@ -90,4 +91,20 @@
     </section>
     <!-- /.content -->
 @endsection
-
+@section('tinyscript')
+<script src="{{ asset('assets/js/tinymce.min.js') }}" referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+      selector: 'textarea.tinymce',      
+      plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect',
+      toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+      tinycomments_mode: 'embedded',
+      tinycomments_author: 'Author name',
+      mergetags_list: [
+        { value: 'First.Name', title: 'First Name' },
+        { value: 'Email', title: 'Email' },
+      ]
+      
+    });
+  </script>
+@endsection

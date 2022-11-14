@@ -30,7 +30,7 @@ class UserController extends Controller
 
         session()->flash('success', 'Успешно зарегистрирован!');
         Auth::login($user);        
-        return redirect()->home();  
+        return redirect()->action('App\Http\Controllers\MainController@index');  
     }
 
     public function loginForm()
@@ -56,10 +56,11 @@ class UserController extends Controller
             'password' => $request->password,
         ]) )
         {            
-            if (auth()->user()->is_admin){
+            if (Auth::user()->is_admin){
                 return view('admin.index');   
             } 
-            return redirect()->home();           
+            // dd('here');
+            return redirect()->action('App\Http\Controllers\MainController@index');          
         } 
 
         return redirect()->back()->with('error', 'Неравильные логин или пароль.');
@@ -68,7 +69,7 @@ class UserController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('home');
+        return redirect()->action('App\Http\Controllers\MainController@index');
     }
 
     public function get_admin(Request $request, $id)

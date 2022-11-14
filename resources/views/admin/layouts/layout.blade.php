@@ -5,6 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+<!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>@isset($title) Admin | {{ $title }} @else| Dashboard @endisset</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
@@ -85,6 +88,12 @@
                     <li>
                         <a href="{{ route('users') }}" class="waves-effect arrow-r">
                             <i class="fas fa-users"></i>Users
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('admin.students') }}" class="waves-effect arrow-r">
+                            <i class="fas fa-users"></i>Students
                         </a>
                     </li>
 
@@ -213,31 +222,9 @@
 <!-- Custom scripts -->
 @yield('tinyscript')
 
-<script>
-    // SideNav Initialization
-    $(".button-collapse").sideNav();
+@yield('scripts')
 
-    var container = document.querySelector('.custom-scrollbar');
-    var ps = new PerfectScrollbar(container, {
-        wheelSpeed: 2,
-        wheelPropagation: true,
-        minScrollbarLength: 20
-    });
 
-    // Data Picker Initialization
-    $('.datepicker').pickadate();
-
-    // Material Select Initialization
-    $(document).ready(function () {
-        $('.mdb-select').material_select();
-    });
-
-    // Tooltips Initialization
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
-
-</script>
 
 <script>
     /*Global settings*/
@@ -292,74 +279,7 @@
             scaleGridLineColor: "rgba(255,255,255,.1)",
             // hide vertical lines
             scaleShowVerticalLines: false,
-        };
-
-        //line
-        var ctxL = document.getElementById("sales").getContext('2d');
-        var myLineChart = new Chart(ctxL, {
-            type: 'line',
-            data: {
-                labels: ["January", "February", "March", "April", "May", "June", "July"],
-                datasets: [{
-                    label: "My First dataset",
-                    fillColor: "rgba(220,220,220,0.2)",
-                    strokeColor: "rgba(220,220,220,1)",
-                    pointColor: "rgba(220,220,220,1)",
-                    pointStrokeColor: "#fff",
-                    pointHighlightFill: "#fff",
-                    pointHighlightStroke: "rgba(220,220,220,1)",
-                    backgroundColor: [
-                        'rgba(255, 255, 255, 0.2)',
-                        'rgba(255, 255, 255, 0.2)',
-                        'rgba(255, 255, 255, 0.2)',
-                        'rgba(255, 255, 255, 0.2)',
-                        'rgba(255, 255, 255, 0.2)',
-                        'rgba(255, 255, 255, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 255, 255, 1)',
-                        'rgba(255, 255, 255, 1)',
-                        'rgba(255, 255, 255, 1)',
-                        'rgba(255, 255, 255, 1)',
-                        'rgba(255, 255, 255, 1)',
-                        'rgba(255, 255, 255, 1)'
-                    ],
-                    borderWidth: 1,
-                    data: [65, 59, 80, 81, 56, 55, 40]
-                },
-                    {
-                        label: "My Second dataset",
-                        fillColor: "rgba(151,187,205,0.2)",
-                        strokeColor: "rgba(151,187,205,1)",
-                        pointColor: "rgba(151,187,205,1)",
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(151,187,205,1)",
-                        backgroundColor: [
-                            'rgba(255, 255, 255, 0.2)',
-                            'rgba(255, 255, 255, 0.2)',
-                            'rgba(255, 255, 255, 0.2)',
-                            'rgba(255, 255, 255, 0.2)',
-                            'rgba(255, 255, 255, 0.2)',
-                            'rgba(255, 255, 255, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 255, 255, 1)',
-                            'rgba(255, 255, 255, 1)',
-                            'rgba(255, 255, 255, 1)',
-                            'rgba(255, 255, 255, 1)',
-                            'rgba(255, 255, 255, 1)',
-                            'rgba(255, 255, 255, 1)'
-                        ],
-                        borderWidth: 1,
-                        data: [28, 48, 40, 19, 86, 27, 90]
-                    }
-                ]
-            },
-            options: {
-                responsive: true
-            }
-        });
+        };        
 
 
         $('#dark-mode').on('click', function (e) {
